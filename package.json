@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "createTable": "node db/scripts/createTable.js"
+    "createTable": "node db/scripts/createTable.js",
+    "dropTable": "node db/scripts/dropTable.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

@@ -2,16 +2,11 @@ const { query } = require("../index");
 require("dotenv").config();
 
 const sqlStatement = `
-CREATE TABLE link(
-id SERIAL PRIMARY KEY,
-projectLink TEXT,
-week INT
-)
+DROP TABLE public.link
 `;
 
-async function createTable() {
+async function dropTable() {
   let result = await query(sqlStatement);
-  console.log(result);
 }
 
-createTable();
+dropTable();

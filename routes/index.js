@@ -8,7 +8,6 @@ const {
   updateFeedback,
 } = require("../model/index");
 
-
 //Get by week request
 router.get("/", async function (req, res, next) {
   console.log("request made");
@@ -42,18 +41,18 @@ router.post("/", async function (req, res, next) {
 } */
 
 //Delete feedback request
-router.delete("/:id", async function(req, res, next) {
+router.delete("/:id", async function (req, res, next) {
   const id = req.params.id;
   const result = await deleteFeedback(id);
-  res.json({success: true, data: result});
-})
+  res.json({ success: true, data: result });
+});
 
 //Patch edit feedback for new feedback
-router.patch("/:id", async function(req, res, next) {
-  const {feedback} = req.body
+router.patch("/:id", async function (req, res, next) {
+  const { feedback } = req.body;
   const id = req.params.id;
   let result = await updateFeedback(id, feedback);
-  res.json({success: true, data: result})
-})
+  res.json({ success: true, data: result });
+});
 
 module.exports = router;
