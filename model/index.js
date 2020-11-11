@@ -9,7 +9,7 @@ const { query } = require("../db");
 
 async function getAllFeedback() {
   const result = await query(`SELECT * FROM feedback;`);
-  return result.row;
+  return result.rows;
 }
 
 // add feedback
@@ -19,7 +19,7 @@ async function addFeedback(feedbacktext, week, date) {
     `INSERT INTO feedback (feedback, week, date) VALUES ($1, $2, $3);`,
     [feedback, week, date]
   );
-  return result.row;
+  return result.rows;
 }
 
 // deleteFeedback
@@ -30,6 +30,18 @@ async function deleteFeedback(id) {
 }
 
 // update feedback
+
 async function updateFeedback(id, feedbacktext) {
-  // const result = await query(`UPDATE feedback `)
+  const result = await query(
+    `UPDATE feedback SET feedback = ($1) WHERE id = ($2)`,
+    [feedbacktext, id]
+  );
+  return result.rows;
 }
+
+module.exports = {
+  getAllFeedback,
+  addFeedback,
+  deleteFeedback,
+  updateFeedback,
+};
