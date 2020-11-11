@@ -3,9 +3,7 @@ const { query } = require("../db");
 //get all feedback (we will sort the specific week out after if array returns)
 
 async function getAllLinks(week) {
-  const result = await query(`SELECT * FROM feedback WHERE week = ($1);`, [
-    week,
-  ]);
+  const result = await query(`SELECT * FROM link WHERE week = ($1);`, [week]);
   return result.rows;
 }
 
@@ -13,7 +11,7 @@ async function getAllLinks(week) {
 
 async function addLink(projectLink, week) {
   const result = await query(
-    `INSERT INTO feedback (projectLink, week) VALUES ($1, $2);`,
+    `INSERT INTO link (projectLink, week) VALUES ($1, $2);`,
     [projectLink, week]
   );
   return result.rows;
