@@ -26,7 +26,7 @@ async function addFeedback(feedbacktext, week, date) {
 
 async function deleteFeedback(id) {
   const result = await query(`DELETE FROM feedback WHERE id = ($1);`, [id]);
-  return result;
+  return result.rows;
 }
 
 // update feedback
