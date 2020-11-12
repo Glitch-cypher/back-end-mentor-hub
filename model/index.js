@@ -16,7 +16,7 @@ async function getAllFeedback(week) {
 
 async function addFeedback(feedbacktext, week, date) {
   const result = await query(
-    `INSERT INTO feedback (feedback, week, date) VALUES ($1, $2, $3);`,
+    `INSERT INTO feedback (feedback, week, date) VALUES ($1, $2, $3) RETURNING *;`,
     [feedbacktext, week, date]
   );
   console.log(result.rows)
@@ -34,7 +34,7 @@ async function deleteFeedback(id) {
 
 async function updateFeedback(id, feedbacktext) {
   const result = await query(
-    `UPDATE feedback SET feedback = ($1) WHERE id = ($2)`,
+    `UPDATE feedback SET feedback = ($1) WHERE id = ($2) RETURNING *;`,
     [feedbacktext, id]
   );
   return result.rows;
