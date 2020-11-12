@@ -17,19 +17,20 @@ const {
 
 //get all links by week
 router.get("/link", async function (req, res, next) {
-  console.log("request made");
+  console.log("get request made");
   const { week } = req.query;
   const result = await getAllLinks(week);
-  console.log("It worked");
+  console.log("get link worked");
   res.json({ success: true, data: result });
 });
 
 // add link
 router.post("/link", async function (req, res, next) {
-  console.log("request made");
-  const { projectLink, week } = req.body;
-  const result = await addLink(projectLink, week);
-  console.log("It worked");
+  console.log("post request made");
+  const { projectlink, week } = req.body;
+  console.log(projectlink);
+  const result = await addLink(projectlink, week);
+  console.log("post link worked");
   res.json({
     success: true,
     data: result
@@ -45,15 +46,15 @@ router.delete("/link/:id", async function (req, res, next) {
 
 // update link
 router.patch("/link/:id", async function (req, res, next) {
-  const { projectLink } = req.body;
+  const { projectlink } = req.body;
   const id = req.params.id;
-  const result = await updateLink(id, projectLink);
+  const result = await updateLink(id, projectlink);
   res.json({ success: true, data: result });
 });
 
 //Get by week request
 router.get("/feedback", async function (req, res, next) {
-  console.log("request made");
+  console.log("get request made");
   const { week } = req.query;
   const result = await getAllFeedback(week);
   console.log("It worked");
@@ -62,7 +63,7 @@ router.get("/feedback", async function (req, res, next) {
 
 //Post new feedback request - allow
 router.post("/feedback", async function (req, res, next) {
-  console.log("request made");
+  console.log("post request made");
   const { feedback, week, date } = req.body;
   const result = await addFeedback(feedback, week, date);
   console.log("It worked");

@@ -14,13 +14,14 @@ async function addLink(projectLink, week) {
     `INSERT INTO link (projectLink, week) VALUES ($1, $2) RETURNING *;`,
     [projectLink, week]
   );
+  console.log (result.rows)
   return result.rows;
 }
 
 // deleteFeedback
 
 async function deleteLink(id) {
-  const result = await query(`DELETE FROM projectLink WHERE id = ($1);`, [id]);
+  const result = await query(`DELETE FROM link WHERE id = ($1);`, [id]);
   return result.rows;
 }
 
