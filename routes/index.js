@@ -68,7 +68,7 @@ router.post("/feedback", async function (req, res, next) {
   console.log("It worked");
   res.json({
     success: true,
-    message: `This feedback was added to week ${week}`,
+    data: result
   });
 });
 

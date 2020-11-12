@@ -19,6 +19,7 @@ async function addFeedback(feedbacktext, week, date) {
     `INSERT INTO feedback (feedback, week, date) VALUES ($1, $2, $3);`,
     [feedbacktext, week, date]
   );
+  console.log(result.rows)
   return result.rows;
 }
 
