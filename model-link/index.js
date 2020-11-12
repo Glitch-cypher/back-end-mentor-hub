@@ -11,7 +11,7 @@ async function getAllLinks(week) {
 
 async function addLink(projectLink, week) {
   const result = await query(
-    `INSERT INTO link (projectLink, week) VALUES ($1, $2);`,
+    `INSERT INTO link (projectLink, week) VALUES ($1, $2) RETURNING *;`,
     [projectLink, week]
   );
   return result.rows;
@@ -28,7 +28,7 @@ async function deleteLink(id) {
 
 async function updateLink(id, projectLink) {
   const result = await query(
-    `UPDATE link SET projectLink = ($1) WHERE id = ($2)`,
+    `UPDATE link SET projectLink = ($1) WHERE id = ($2) RETURNING *;`,
     [projectLink, id]
   );
   return result.rows;

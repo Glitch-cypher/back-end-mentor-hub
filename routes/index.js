@@ -32,7 +32,7 @@ router.post("/link", async function (req, res, next) {
   console.log("It worked");
   res.json({
     success: true,
-    message: `This link was added to week ${week}`,
+    data: result
   });
 });
 
@@ -47,7 +47,7 @@ router.delete("/link/:id", async function (req, res, next) {
 router.patch("/link/:id", async function (req, res, next) {
   const { projectLink } = req.body;
   const id = req.params.id;
-  let result = await updateLink(id, projectLink);
+  const result = await updateLink(id, projectLink);
   res.json({ success: true, data: result });
 });
 
@@ -90,7 +90,7 @@ router.delete("/feedback/:id", async function (req, res, next) {
 router.patch("/feedback/:id", async function (req, res, next) {
   const { feedback } = req.body;
   const id = req.params.id;
-  let result = await updateFeedback(id, feedback);
+  const result = await updateFeedback(id, feedback);
   res.json({ success: true, data: result });
 });
 
