@@ -52,7 +52,7 @@ router.patch("/link/:id", async function (req, res, next) {
 });
 
 //Get by week request
-router.get("/", async function (req, res, next) {
+router.get("/feedback", async function (req, res, next) {
   console.log("request made");
   const { week } = req.query;
   const result = await getAllFeedback(week);
@@ -61,7 +61,7 @@ router.get("/", async function (req, res, next) {
 });
 
 //Post new feedback request - allow
-router.post("/", async function (req, res, next) {
+router.post("/feedback", async function (req, res, next) {
   console.log("request made");
   const { feedback, week, date } = req.body;
   const result = await addFeedback(feedback, week, date);
@@ -80,14 +80,14 @@ router.post("/", async function (req, res, next) {
 } */
 
 //Delete feedback request
-router.delete("/:id", async function (req, res, next) {
+router.delete("/feedback/:id", async function (req, res, next) {
   const id = req.params.id;
   const result = await deleteFeedback(id);
   res.json({ success: true, data: result });
 });
 
 //Patch edit feedback for new feedback
-router.patch("/:id", async function (req, res, next) {
+router.patch("/feedback/:id", async function (req, res, next) {
   const { feedback } = req.body;
   const id = req.params.id;
   let result = await updateFeedback(id, feedback);
