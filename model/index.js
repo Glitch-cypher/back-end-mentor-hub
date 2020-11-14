@@ -7,8 +7,8 @@ const { query } = require("../db");
 
 //get all feedback (we will sort the specific week out after if array returns)
 
-async function getAllFeedback(week) {
-  const result = await query(`SELECT * FROM feedback WHERE week = ($1);`, [week]);
+async function getAllFeedback() {
+  const result = await query(`SELECT * FROM feedback ;`);
   return result.rows;
 }
 
@@ -19,7 +19,6 @@ async function addFeedback(feedbacktext, week, date) {
     `INSERT INTO feedback (feedback, week, date) VALUES ($1, $2, $3) RETURNING *;`,
     [feedbacktext, week, date]
   );
-  console.log(result.rows)
   return result.rows;
 }
 

@@ -5,7 +5,9 @@
   "scripts": {
     "start": "nodemon ./bin/www",
     "createTable": "node db/scripts/createTable.js",
-    "dropTable": "node db/scripts/dropTable.js"
+    "dropTable": "node db/scripts/dropTable.js",
+    "createFeedbackTable": "node db/scriptsFeedback/createTable.js",
+    "dropFeedbackTable": "node db/scriptsFeedback/dropTable.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
