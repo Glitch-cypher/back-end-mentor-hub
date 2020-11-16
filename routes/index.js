@@ -33,7 +33,7 @@ router.post("/link", async function (req, res, next) {
   console.log("post link worked");
   res.json({
     success: true,
-    data: result
+    data: result,
   });
 });
 
@@ -46,18 +46,19 @@ router.delete("/link/:id", async function (req, res, next) {
 
 // update link
 router.patch("/link/:id", async function (req, res, next) {
-  const { projectlink } = req.body;
+  console.log("patch request made");
+  const { projectLink } = req.body;
   const id = req.params.id;
-  const result = await updateLink(id, projectlink);
+  const result = await updateLink(id, projectLink);
+  console.log("patch request worked");
   res.json({ success: true, data: result });
 });
 
 //Get by week request
 router.get("/feedback", async function (req, res, next) {
   console.log("get request made");
-  const { week } = req.query;
-  const result = await getAllFeedback(week);
-  console.log("It worked");
+  const result = await getAllFeedback();
+  console.log("get request worked");
   res.json({ success: true, data: result });
 });
 
@@ -66,19 +67,12 @@ router.post("/feedback", async function (req, res, next) {
   console.log("post request made");
   const { feedback, week, date } = req.body;
   const result = await addFeedback(feedback, week, date);
-  console.log("It worked");
+  console.log("post request worked");
   res.json({
     success: true,
-    data: result
+    data: result,
   });
 });
-
-/*
-{
-  "feedback": "Backend was crap",
-  "week": 2,
-  "date": "20/03/2020"
-} */
 
 //Delete feedback request
 router.delete("/feedback/:id", async function (req, res, next) {
