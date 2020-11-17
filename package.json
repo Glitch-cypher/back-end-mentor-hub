@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "node ./bin/www",
     "createTable": "node db/scripts/createTable.js",
     "dropTable": "node db/scripts/dropTable.js",
     "createFeedbackTable": "node db/scriptsFeedback/createTable.js",
